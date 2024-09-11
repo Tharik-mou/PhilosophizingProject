@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://q1n2avyh3168"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_67unh"]
+[ext_resource type="Texture2D" uid="uid://0n1xsac7eyk0" path="res://assets/Player/New Piskel-6.png.png" id="2_rpmwy"]
+[ext_resource type="Script" path="res://scripts/Texture.gd" id="3_oqysw"]
+
+[sub_resource type="Animation" id="Animation_ecvqg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fv8md"]
+_data = {
+"RESET": SubResource("Animation_ecvqg")
+}
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_67unh")
+speed = 400
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+
+[node name="Texture" type="Sprite2D" parent="." node_paths=PackedStringArray("player", "animation")]
+texture_filter = 1
+position = Vector2(1.90735e-06, 1.90735e-06)
+scale = Vector2(7, 7)
+texture = ExtResource("2_rpmwy")
+hframes = 8
+vframes = 8
+frame = 2
+script = ExtResource("3_oqysw")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fv8md")
+}

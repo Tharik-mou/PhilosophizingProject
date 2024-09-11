@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmskaci2653l4"]
+
+[ext_resource type="PackedScene" uid="uid://ctd1h2sck106e" path="res://scenes/level_design.tscn" id="2_gh8hy"]
+[ext_resource type="PackedScene" uid="uid://q1n2avyh3168" path="res://scenes/player.tscn" id="6_dmyw2"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 145032704
+limit_bottom = -474443541
+
+[node name="LevelDesign" parent="." instance=ExtResource("2_gh8hy")]
+
+[node name="Player" parent="." instance=ExtResource("6_dmyw2")]
+position = Vector2(80, 85)
+slide_on_ceiling = false
+wall_min_slide_angle = 0.0
